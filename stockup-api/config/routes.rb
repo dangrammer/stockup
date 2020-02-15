@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  # limit resources to used paths
   resources :transactions
   resources :stocks
   resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  post '/login', to: 'login#create'
+  get '/profile', to: 'users#profile'
 end
