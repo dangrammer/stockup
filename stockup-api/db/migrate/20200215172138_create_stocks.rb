@@ -3,6 +3,7 @@ class CreateStocks < ActiveRecord::Migration[6.0]
     create_table :stocks do |t|
       t.string :symbol
       t.integer :shares
+      t.bigint :user_id
 
       t.timestamps
     end
