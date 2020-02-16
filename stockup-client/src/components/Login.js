@@ -1,36 +1,52 @@
 import React, {useState} from 'react'
+import {validateUser} from '../actions/currentUserActions'
+import {createUser} from '../actions/currentUserActions'
+import {useDispatch, useSelector} from 'react-redux'
 
-const Login = () => {
-  const [userName, setUserName] = useState('')
+const Login = ({history}) => {
+  const dispatch = useDispatch()
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const [login, setLogin] = useState(true)
+  const errors = useSelector(state => state.currentUserReducer.errors)
   
   const clearForm = () => {
-    setUserName('')
+    setUsername('')
     setPassword('')
     setEmail('')
   }
 
   const handleClick = () => {
     setLogin(!login)
+    dispatch({type: 'CLEAR_USER_ERRORS'})
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    let user = {userName, password, email}
-    console.log(user)
+    let user 
+
+    if (login) {
+      user = {username, password} 
+      dispatch(validateUser(user, history))
+    } else {
+      user = {username, password, email}
+      dispatch(createUser(user, history))
+    }  
     clearForm()
   }
 
   return (
     <div>
+      <ul>
+        {errors.map(error => <li key={error}>{error}</li>)}
+      </ul>
       <form onSubmit={handleSubmit}>
         <input
           type='text'
-          value={userName}
+          value={username}
           placeholder='Username'
-          onChange={event => setUserName(event.target.value)}
+          onChange={event => setUsername(event.target.value)}
         />
         <input
           type='password'
