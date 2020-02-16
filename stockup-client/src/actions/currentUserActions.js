@@ -18,10 +18,9 @@ export const loadProfile = () => {
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
-        // data.user ?
-        //   dispatch(loginUser(data.user.data)) :
-        //     localStorage.removeItem('token')
+        data.user ?
+          dispatch(loginUser(data.user.data)) :
+            localStorage.removeItem('token')
       })
     }
   }
@@ -50,7 +49,7 @@ export const validateUser = (returningUser, history) => {
       } else {
         localStorage.setItem('token', data.token)
         dispatch(loginUser(data.user.data))
-        // history.push('/listings')
+        history.push('/portfolio')
       }
     }) 
   }
@@ -81,7 +80,7 @@ export const createUser = (newUser, history) => {
       } else {
         localStorage.setItem('token', data.token)
         dispatch(loginUser(data.user.data))
-        // history.push('/dashboard/profile/edit')
+        history.push('/portfolio')
       }
     })
   }
