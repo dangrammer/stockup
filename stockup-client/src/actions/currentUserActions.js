@@ -27,7 +27,7 @@ export const loadProfile = () => {
 }
 
 export const validateUser = (returningUser, history) => {
-  const {username, password} = returningUser
+  const {email, password} = returningUser
 
   return (dispatch) => {
     fetch('http://localhost:3000/login', {
@@ -37,7 +37,7 @@ export const validateUser = (returningUser, history) => {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        username,
+        email,
         password,
       })
     })
@@ -56,7 +56,7 @@ export const validateUser = (returningUser, history) => {
 }
 
 export const createUser = (newUser, history) => {
-  const {username, password, email} = newUser
+  const {username, email, password} = newUser
 
   return (dispatch) => {
     fetch('http://localhost:3000/users', {
@@ -67,8 +67,8 @@ export const createUser = (newUser, history) => {
       },
       body: JSON.stringify({
         username,
-        password,
         email,
+        password,
         balance: 5000.00
       })
     })

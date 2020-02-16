@@ -27,10 +27,10 @@ const Login = ({history}) => {
     let user 
 
     if (login) {
-      user = {username, password} 
+      user = {email, password} 
       dispatch(validateUser(user, history))
     } else {
-      user = {username, password, email}
+      user = {username, email, password}
       dispatch(createUser(user, history))
     }  
     clearForm()
@@ -42,11 +42,19 @@ const Login = ({history}) => {
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>
       <form onSubmit={handleSubmit}>
+        {login ? null :
+          <input
+            type='text'
+            value={username}
+            placeholder='Username'
+            onChange={event => setUsername(event.target.value)}
+          />
+        }
         <input
           type='text'
-          value={username}
-          placeholder='Username'
-          onChange={event => setUsername(event.target.value)}
+          value={email}
+          placeholder='Email'
+          onChange={event => setEmail(event.target.value)}
         />
         <input
           type='password'
@@ -54,14 +62,6 @@ const Login = ({history}) => {
           placeholder='Password'
           onChange={event => setPassword(event.target.value)}
         />
-        {login ? null :
-          <input
-            type='text'
-            value={email}
-            placeholder='Email'
-            onChange={event => setEmail(event.target.value)}
-          />
-        }
         <br/>
         <input type='submit' value={login ? 'Log In' : 'Create Account'}/>
       </form>
