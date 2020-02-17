@@ -1,8 +1,14 @@
 import React from 'react'
+import CashBalance from '../components/portfolio/CashBalance'
+import PurchaseForm from '../components/portfolio/PurchaseForm'
 
 const PortfolioContainer = () => {
   return (
-    <h1>Portfolio Container</h1>
+    <div>
+      <h1>Portfolio</h1>
+      <CashBalance/>
+      <PurchaseForm/>
+    </div>
   )
 }
 
