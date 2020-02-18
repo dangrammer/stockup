@@ -1,17 +1,19 @@
+import {currencyFormatter} from './currencyFormatter'
+
 export const validateTransaction = (symbol, shares, user) => {
   const token = localStorage.token
   const shareQty = parseFloat(shares)
   const balance = parseFloat(user.attributes.balance)
-  // const userId = user.id
   
   return (dispatch) => {
     if (token) {
       
       if (shareQty < 1 || !Number.isInteger(shareQty)) {
-        dispatch({type: 'TRANSACTION_ERRORS', errors: ['Share quantity must be whole integer.']})
+        dispatch({type: 'TRANSACTION_ERRORS', errors: ['Share quantity must be whole integer']})
         setTimeout(() => dispatch({type: 'CLEAR_TRANSACTION_ERRORS'}), 2500)
         return
-      }
+      } else {
+        dispatch({type: 'VALIDATING', switch: true})
 
       fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${process.env.REACT_APP_AV_KEY}`, {
         method: 'get',
@@ -28,16 +30,22 @@ export const validateTransaction = (symbol, shares, user) => {
 
         if (purchaseAmount <= balance) {
           dispatch({type: 'VALIDATING', switch: false})
-          console.log(`Purchasing ${shares} shares @ ${price}. Purchase Amount: ${purchaseAmount}. New Balance: ${balance - purchaseAmount}`)
-          // make post fetch to transactions (SYMBOL, price, shares, purcahseAmount?)
-          // and patch fetch to user balance (userId)
+          dispatch({
+            type: 'PENDING_TRANSACTION', 
+            transaction: {
+              symbol,
+              shares: parseInt(shares),
+              price,
+              purchaseAmount
+            }
+          })
         } else {
           dispatch({type: 'VALIDATING', switch: false})
           dispatch({type: 'TRANSACTION_ERRORS', 
             errors: [
               'Insufficient Funds.',
-              `Current Balance: ${balance}.`,
-              `Purchase Amount: ${purchaseAmount}`
+              `Current Balance: ${currencyFormatter(balance)}`,
+              `Purchase Amount: ${currencyFormatter(purchaseAmount)}`
             ]
           })
           setTimeout(() => dispatch({type: 'CLEAR_TRANSACTION_ERRORS'}), 5000)
@@ -48,6 +56,7 @@ export const validateTransaction = (symbol, shares, user) => {
         dispatch({type: 'TRANSACTION_ERRORS', errors: ['Invalid Ticker Symbol']})
         setTimeout(() => dispatch({type: 'CLEAR_TRANSACTION_ERRORS'}), 2500)
       })
+      }
     }
   }
 }
