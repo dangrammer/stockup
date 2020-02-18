@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {validateTransaction} from '../../actions/transactionActions'
+import {validateTransaction, recordTransaction} from '../../actions/transactionActions'
 import {currencyFormatter} from '../../actions/currencyFormatter'
 
 const PurchaseForm = () => {
@@ -27,9 +27,10 @@ const PurchaseForm = () => {
   
   const handleClick = (event) => {
     if (event.target.id === 'confirm') {
-      console.log(symbol, shares, price, user.id)
-      // make post fetch to transactions (symbol, price, shares, purcahseAmount?)
-      // and patch fetch to user balance (user.id)
+      const balance = parseFloat(user.attributes.balance)
+      const record = {symbol, shares, price, userId: parseInt(user.id), balance}
+      
+      dispatch(recordTransaction(record))
       clearForm()
     } 
     dispatch({type: 'COMPLETED_TRANSACTION'})
@@ -45,7 +46,7 @@ const PurchaseForm = () => {
       {purchaseAmount ?
         <span>
           Purchasing {symbol} <br/>
-          {shares} shares @ {currencyFormatter(price)} <br/> 
+          {shares} {shares > 1 ? 'shares' : 'share'} @ {currencyFormatter(price)} <br/> 
           Purchase Amount: {currencyFormatter(purchaseAmount)} <br/>
           <button id='confirm' onClick={handleClick}>Confirm Purchase</button> <br/>
           <button id='cancel' onClick={handleClick}>Cancel Purchase</button> 

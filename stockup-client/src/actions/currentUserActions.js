@@ -5,7 +5,7 @@ const loginUser = (user) => ({
 
 export const loadProfile = () => {
   const token = localStorage.token
-
+  
   return (dispatch) => {
     if (token) {
       fetch('http://localhost:3000/profile', {
@@ -19,8 +19,8 @@ export const loadProfile = () => {
       .then(response => response.json())
       .then(data => {
         data.user ?
-          dispatch(loginUser(data.user.data)) :
-            localStorage.removeItem('token')
+        dispatch(loginUser(data.user.data)) :
+        localStorage.removeItem('token')
       })
     }
   }
@@ -89,3 +89,32 @@ export const createUser = (newUser, history) => {
 export const logoutUser = () => ({
   type: 'LOGOUT_USER'
 })
+
+export const adjustBalance = (userId, newBalance) => {
+  const token = localStorage.token
+
+  if (token) {
+    return (dispatch) => {
+      fetch(`http://localhost:3000/users/${userId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          balance: newBalance 
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.errors) {
+          dispatch({type: 'TRANSACTION_ERRORS', errors: ['Balance Error: Please contact financial institution']})
+          setTimeout(() => dispatch({type: 'CLEAR_TRANSACTION_ERRORS'}), 5000)
+        } else {
+          dispatch({type: 'UPDATE_USER', user: data.data})
+        }
+      })
+    }
+  }
+}

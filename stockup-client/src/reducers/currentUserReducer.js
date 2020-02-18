@@ -11,6 +11,9 @@ const currentUserReducer = (state = initialState, action) => {
 
     case 'LOGOUT_USER':
       return {...state, currentUser: {}, errors: []}
+
+    case 'UPDATE_USER':
+      return {...state, currentUser: action.user}
       
     case 'USER_ERRORS':
       return {...state, errors: action.errors}  

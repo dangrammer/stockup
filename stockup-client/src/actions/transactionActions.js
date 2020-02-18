@@ -1,3 +1,4 @@
+import {adjustBalance} from './currentUserActions'
 import {currencyFormatter} from './currencyFormatter'
 
 export const validateTransaction = (symbol, shares, user) => {
@@ -57,6 +58,40 @@ export const validateTransaction = (symbol, shares, user) => {
         setTimeout(() => dispatch({type: 'CLEAR_TRANSACTION_ERRORS'}), 2500)
       })
       }
+    }
+  }
+}
+
+export const recordTransaction = (record) => {
+  const token = localStorage.token
+  const {symbol, shares, price, userId, balance} = record
+
+  if (token) {
+    return (dispatch) => {
+      fetch('http://localhost:3000/transactions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          symbol,
+          shares,
+          price,
+          user_id: userId
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.errors) {
+          dispatch({type: 'TRANSACTION_ERRORS', errors: ['Transaction Failed']})
+          setTimeout(() => dispatch({type: 'CLEAR_TRANSACTION_ERRORS'}), 2500)
+        } else {
+          const newBalance = balance - (price * shares)
+          dispatch(adjustBalance(userId, newBalance))
+        }
+      })
     }
   }
 }
