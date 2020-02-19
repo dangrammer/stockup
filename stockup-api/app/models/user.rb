@@ -8,4 +8,9 @@ class User < ApplicationRecord
   validates :email, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
   validates :username, length: {in: 2..20}
   validates :password, length: {minimum: 8}, on: :create
+
+  def records
+    self.transactions
+  end
+
 end
