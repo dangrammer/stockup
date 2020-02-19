@@ -1,7 +1,7 @@
 import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import PortfolioContainer from './PortfolioContainer'
-import TransactionContainer from './TransactionContainer'
+import TransactionList from '../components/transactions/TransactionList'
 
 const MainContainer = () => {
   
@@ -9,7 +9,7 @@ const MainContainer = () => {
     <>
       <Switch>
         <Route path='/portfolio' component={PortfolioContainer}/>
-        <Route path='/transactions' component={TransactionContainer}/>
+        <Route path='/transactions' component={TransactionList}/>
         <Redirect to='/portfolio'/>
       </Switch>
     </>

@@ -1,8 +1,8 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
-import TransactionRecord from '../components/transactions/TransactionRecord'
+import TransactionRecord from './TransactionRecord'
 
-const TransactionContainer = () => {
+const TransactionList = () => {
   const user = useSelector(state => state.currentUserReducer.currentUser)
   const records = user.attributes.records.sort((a, b) => a.created_at > b.created_at ? -1 : 1)
 
@@ -35,4 +35,4 @@ const TransactionContainer = () => {
   )
 }
 
-export default TransactionContainer
+export default TransactionList
