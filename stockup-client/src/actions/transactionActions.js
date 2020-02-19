@@ -1,5 +1,5 @@
 import {adjustBalance} from './currentUserActions'
-import {addStockToPortfolio, increaseShares} from './stockActions'
+import {addStockToPortfolio, increaseShares, checkPrice} from './stockActions'
 import {currencyFormatter} from './currencyFormatter'
 
 export const validateTransaction = (symbol, shares, user) => {
@@ -91,6 +91,7 @@ export const recordTransaction = (record, stockId) => {
         } else {
           const newBalance = balance - (price * shares)
           dispatch(adjustBalance(userId, newBalance))
+          dispatch(checkPrice(symbol))
           if (stockId) {
             dispatch(increaseShares(stockId, shares))
           } else {

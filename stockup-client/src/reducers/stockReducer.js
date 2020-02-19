@@ -1,5 +1,6 @@
 const initialState = {
   stocks: [],
+  prices: [],
   errors: []
 }
 
@@ -11,6 +12,11 @@ const stockReducer = (state = initialState, action) => {
 
     case 'ADD_STOCK':
       return {...state, stocks: [...state.stocks, action.stock]}
+
+    case 'ADD_PRICE':
+      let prices = state.prices.filter(price => price.symbol !== action.price.symbol)
+      prices.push(action.price)
+      return {...state, prices: prices}  
 
     case 'INCREASE_SHARES':
       let stocks = state.stocks.filter(stock => stock.id !== action.stock.id)

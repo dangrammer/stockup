@@ -78,3 +78,30 @@ export const increaseShares = (stockId, shares) => {
     }
   }
 }
+
+export const checkPrice = (symbol) => {
+  const token = localStorage.token
+  
+  return (dispatch) => {
+    if (token) {
+      fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${process.env.REACT_APP_AV_KEY}`, {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        const quote = data['Global Quote']
+        if (quote) {
+          const open = quote['02. open']
+          const price = quote['05. price']
+          dispatch({type: 'ADD_PRICE', price: {symbol, open, price}})
+        } else {
+          console.log('fetching data...')
+        }
+      })
+    }
+  }
+}
