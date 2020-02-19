@@ -29,8 +29,10 @@ const PurchaseForm = () => {
     if (event.target.id === 'confirm') {
       const balance = parseFloat(user.attributes.balance)
       const record = {symbol, shares, price, userId: parseInt(user.id), balance}
-      
-      dispatch(recordTransaction(record))
+      const stock = user.attributes.stockList.find(stock => stock.symbol === symbol)
+      const stockId = stock ? stock.id : null
+
+      dispatch(recordTransaction(record, stockId))
       clearForm()
     } 
     dispatch({type: 'COMPLETED_TRANSACTION'})

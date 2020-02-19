@@ -9,6 +9,10 @@ class User < ApplicationRecord
   validates :username, length: {in: 2..20}
   validates :password, length: {minimum: 8}, on: :create
 
+  def stockList
+    self.stocks
+  end
+
   def records
     self.transactions
   end

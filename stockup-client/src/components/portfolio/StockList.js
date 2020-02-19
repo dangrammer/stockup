@@ -4,8 +4,8 @@ import Stock from './Stock'
 
 const StockList = () => {
   const stocks = useSelector(state => state.stockReducer.stocks)
-  console.log(stocks)
-  
+  console.log(stocks.map(stock => `${stock.symbol}, ${stock.shares} shares`))
+
   return (
     <div>
       Stocklist (TOTAL EARNING$)

@@ -1,3 +1,5 @@
+import {loadPortfolio} from './stockActions'
+
 const loginUser = (user) => ({
   type: 'LOGIN_USER',
   user
@@ -18,9 +20,15 @@ export const loadProfile = () => {
       })
       .then(response => response.json())
       .then(data => {
-        data.user ?
-        dispatch(loginUser(data.user.data)) :
-        localStorage.removeItem('token')
+        const userObject = data.user.data
+        const stockList = userObject.attributes.stockList
+
+        if (data.user) {
+          dispatch(loginUser(userObject))
+          dispatch(loadPortfolio(stockList))
+        } else {
+          localStorage.removeItem('token')
+        }
       })
     }
   }
