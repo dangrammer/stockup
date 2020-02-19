@@ -46,8 +46,8 @@ const PurchaseForm = () => {
       {purchaseAmount ?
         <span>
           Purchasing {symbol} <br/>
-          {shares} {shares > 1 ? 'shares' : 'share'} @ {currencyFormatter(price)} <br/> 
-          Purchase Amount: {currencyFormatter(purchaseAmount)} <br/>
+          {shares} {shares > 1 ? 'shares' : 'share'} @ USD {currencyFormatter(price)} <br/> 
+          Purchase Amount: USD {currencyFormatter(purchaseAmount)} <br/>
           <button id='confirm' onClick={handleClick}>Confirm Purchase</button> <br/>
           <button id='cancel' onClick={handleClick}>Cancel Purchase</button> 
         </span> :

@@ -6,7 +6,7 @@ const TransactionRecord = ({symbol, shares, price, date}) => {
     <div>
       <span>BUY({symbol})</span> <br/>
       <span>{`${shares} ${shares > 1 ? 'shares' : 'share'}`}</span> <br/>
-      <span>@ {currencyFormatter(price)}</span> <br/>
+      <span>@ USD {currencyFormatter(price)}</span> <br/>
       <span>Transaction Processed: {date}</span> <br/>
       <br/>
     </div>

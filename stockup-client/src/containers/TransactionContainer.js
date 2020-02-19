@@ -14,17 +14,22 @@ const TransactionContainer = () => {
 
   return (
     <>
-      <h1>Transaction Container</h1>
+      <h1>Transaction Record</h1>
       <div>
-        {records.map(record => 
-          <TransactionRecord 
-            key={record.id} 
-            symbol={record.symbol}
-            shares={record.shares}
-            price={record.price}
-            date={dateFormat(record.created_at)}
-          />
-        )}
+        {records.length > 0 ?
+          <>
+            {records.map(record => 
+              <TransactionRecord 
+                key={record.id} 
+                symbol={record.symbol}
+                shares={record.shares}
+                price={record.price}
+                date={dateFormat(record.created_at)}
+              />
+            )}
+          </> :
+            <span>No Transaction Records</span>
+        }
       </div>
     </>
   )
