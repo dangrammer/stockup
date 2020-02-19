@@ -4,17 +4,24 @@ import Stock from './Stock'
 
 const StockList = () => {
   const stocks = useSelector(state => state.stockReducer.stocks)
-  console.log(stocks.map(stock => `${stock.symbol}, ${stock.shares} shares`))
+
+  stocks.sort((a, b) => a.symbol.localeCompare(b.symbol))
 
   return (
     <div>
       Stocklist (TOTAL EARNING$)
-      <ul>
-        <Stock/>
-        <Stock/>
-        <Stock/>
-        <Stock/>
-      </ul>
+      {stocks.length > 0 ?
+          <ul>
+            {stocks.map(stock => 
+              <Stock 
+                key={stock.id} 
+                symbol={stock.symbol}
+                shares={stock.shares}
+              />
+            )}
+          </ul> :
+            <span>No Stocks In Your Portfolio</span>
+        }
     </div>
   )
 }

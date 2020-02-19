@@ -11,7 +11,8 @@ class StocksController < ApplicationController
 
   def update
     stock = Stock.find(params[:id])
-    stock.update(shares: stock_params[:shares])
+    newAmount = stock.shares + stock_params[:shares]
+    stock.update(shares: newAmount)
     if stock.valid?
       render json: StockSerializer.new(stock), status: :accepted
     else
