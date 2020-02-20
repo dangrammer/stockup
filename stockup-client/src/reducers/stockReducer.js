@@ -25,7 +25,20 @@ const stockReducer = (state = initialState, action) => {
       return {...state, stocks: stocks}
 
     case 'SET_TOTAL_EARNINGS':
-      return {...state, totalEarnings: action.total}
+      console.log(action.total, 'from reducer')
+      let total 
+
+      if (action.total.includes(NaN)) {
+        total = null
+      } else if (action.total.length === 1) {
+        total = action.total[0]
+      } else if (action.total.length === 0) {
+        total = 0
+      } else {
+        total = action.total.reduce((t, n) => t + n)
+      }
+      // let total = action.total === NaN ? null : action.total
+      return {...state, totalEarnings: total}
 
     case 'RESET_STOCKS':
       return initialState  

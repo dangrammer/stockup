@@ -192,7 +192,7 @@ button:focus {
   text-shadow: 1.5px 1.5px 5px #84A882;
 }
 
-#no-record-alert {
+.no-alert {
   text-align: center;
 }
 
@@ -210,3 +210,128 @@ button:focus {
 }
 
 
+/* PortfolioContainer.js */
+
+#portfolio {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#portfolio-title {
+  margin-top: 0px;
+  text-shadow: 1.5px 1.5px 5px #84A882;
+}
+
+#portfolio-errors {
+  margin: auto;
+  font-family: monospace;
+  font-size: 15px;
+  color: #FE4B4B;
+}
+
+#market {
+  display: grid;
+  grid-template-rows: 0.5fr 4fr;
+}
+
+
+/* StockList.js */
+
+#stock-list {
+  margin-top: 20px;
+  height: 400px;
+  border: solid 2px #3E3E3C;
+  overflow: scroll;
+}
+
+
+/* Stock.js */
+
+.stock {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  align-content: center;
+  height: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;  
+  border-top: dotted 1px #84A882;
+}
+
+#ticker {
+  text-align: center;
+}
+
+#shares {
+  padding-right: 5px;
+  text-align: right;
+}
+
+
+/* CashBalance.js */
+
+#balance {
+  margin-top: 50px;
+  text-align: center;
+}
+
+
+/* PurchaseForm.js */
+
+#purchase-form {
+  display: grid;
+  grid-template-rows: 1fr 2fr 3fr;
+  justify-content: center;
+}
+
+#purchase-title {
+  text-align: center;
+}
+
+#search-form {
+  width: 300px;
+  margin-top: 75px;
+  font-size: 20px;
+}
+
+.search-input {
+  margin: 1px;
+  font-size: 20px;
+  width: 98%;
+}
+
+#search {
+  display: grid;
+  grid-template-rows: 4fr, 2fr;
+  font-size: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+#confirm-purchase {
+  font-size: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+.checkout {
+  font-size: 20px;
+}
+
+#confirm-btn:hover {
+  color: #ECEDDD;
+  background-color:  #84A882;
+  text-shadow: 1px 1px 3px #3E3E3C;
+}
+
+#cancel-btn:hover {
+  color: #ECEDDD;
+  background-color: #E66767;
+  text-shadow: 1px 1px 3px #3E3E3C;
+}
+
+#purchase-errors {
+  margin-bottom: 10px;
+  font-family: monospace;
+  font-size: 15px;
+  color: #FE4B4B;
+}

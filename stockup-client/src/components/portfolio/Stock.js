@@ -24,11 +24,12 @@ const Stock = ({symbol, shares, prices}) => {
 
 
   return (
-    <li> 
-      <span>{symbol} | </span>
-      <span>{shares} {shares === 1 ? 'share' : 'shares'} | @ </span>
+    <li className='stock'> 
+      <span id='ticker'><strong>{symbol}</strong></span>
+      <span id='shares'>{shares}</span>
+      <span>{shares === 1 ? 'share' : 'shares'}</span>
       <span style={{color: color}}>
-        {prices ? `${currencyFormatter(prices.price)} ${percentShift(prices)}` : 'Calculating...'}
+        @ {prices ? `${currencyFormatter(prices.price)} ${percentShift(prices)}` : 'Calculating...'}
       </span>
     </li>
   )

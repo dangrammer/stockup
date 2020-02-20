@@ -24,8 +24,8 @@ export const loadProfile = () => {
         const stockList = userObject.attributes.stockList
 
         if (data.user) {
-          dispatch(loginUser(userObject))
-          dispatch(loadPortfolio(stockList))
+            dispatch(loginUser(userObject))
+            dispatch(loadPortfolio(stockList))
         } else {
           localStorage.removeItem('token')
         }

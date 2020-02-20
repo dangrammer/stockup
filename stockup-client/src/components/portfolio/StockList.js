@@ -1,29 +1,16 @@
-import React, {useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import React from 'react'
+import {useSelector} from 'react-redux'
 import Stock from './Stock'
-import {setTotalEarnings} from '../../actions/stockActions'
-import {currencyFormatter} from '../../actions/currencyFormatter'
 
 
 const StockList = () => {
-  const dispatch = useDispatch()
   const stocks = useSelector(state => state.stockReducer.stocks)
   const prices = useSelector(state => state.stockReducer.prices)
-  const totalEarnings = useSelector(state => state.stockReducer.totalEarnings)
-  const errors = useSelector(state => state.stockReducer.errors)
-
-  useEffect(() => dispatch(setTotalEarnings(stocks, prices)), [dispatch, stocks, prices])
 
   stocks.sort((a, b) => a.symbol.localeCompare(b.symbol))
 
   return (
-    <div>
-      <ul>
-        {errors.map(error => <li key={error}>{error}</li>)}
-      </ul>
-      {/* TOTAL EARNINGS: USD {totalEarnings !== null ? currencyFormatter(totalEarnings) : 'calculating...'} */}
-      TOTAL EARNINGS: USD {totalEarnings !== null || totalEarnings === 0 ? currencyFormatter(totalEarnings) : 'calculating...'}
-      <br/>
+    <div id='stock-list'>
       {stocks.length > 0 ?
           <ul>
             {stocks.map(stock => 
@@ -35,7 +22,9 @@ const StockList = () => {
               />
             )}
           </ul> :
-            <span>No Stocks In Your Portfolio</span>
+            <span className='no-alert'>
+              <h3>*No Stocks In Your Portfolio</h3>
+            </span>
         }
     </div>
   )

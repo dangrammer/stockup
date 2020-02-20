@@ -6,8 +6,9 @@ const CashBalance = () => {
   const balance = useSelector(state => state.currentUserReducer.currentUser.attributes.balance)
   
   return (
-    <span>
-      Cash Balance: USD {currencyFormatter(balance)}
+    <span id ='balance'>
+      {'CASH BALANCE: USD '}
+      <strong>{currencyFormatter(balance)}</strong>
     </span>
   )
 }

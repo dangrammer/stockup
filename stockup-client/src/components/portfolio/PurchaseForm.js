@@ -39,22 +39,17 @@ const PurchaseForm = () => {
   }
 
   return (
-    <div>
-      <h4>Purchase Form</h4>
-      <ul>
-        {errors.map(error => <li key={error}>{error}</li>)}
-      </ul>
-      {validating ? <span>Validating . . .</span> : null}
-      {purchaseAmount ?
-        <span>
-          Purchasing {symbol} <br/>
-          {shares} {shares > 1 ? 'shares' : 'share'} @ USD {currencyFormatter(price)} <br/> 
-          Purchase Amount: USD {currencyFormatter(purchaseAmount)} <br/>
-          <button id='confirm' onClick={handleClick}>Confirm Purchase</button> <br/>
-          <button id='cancel' onClick={handleClick}>Cancel Purchase</button> 
-        </span> :
-          <form onSubmit={handleSubmit}>
+    <div id='purchase-form'>
+      <h4 id='purchase-title'>Purchase Form</h4>
+      {!purchaseAmount ? 
+        <div id='search'>
+          <ul id='purchase-errors'>
+            {errors.map(error => <li key={error}>{error}</li>)}
+          </ul>
+          {validating ? <span>Validating . . .</span> : null}
+          <form id='search-form' onSubmit={handleSubmit}>
             <input
+              className='search-input'
               type='text'
               value={tickerSymbol}
               placeholder='Ticker Symbol'
@@ -62,6 +57,7 @@ const PurchaseForm = () => {
             />
             <br/>
             <input
+              className='search-input'
               type='number'
               value={shareQty}
               placeholder='Shares (QTY)'
@@ -74,8 +70,27 @@ const PurchaseForm = () => {
               }}
             />
             <br/>
-            <input type='submit' value='Buy'/>
+            <input className='search-input btn' type='submit' value='Buy'/>
           </form>
+        </div> :
+          <div id='confirm-purchase'>
+            <span>
+              Purchasing <strong>{symbol}</strong> 
+              <br/>
+              {shares} {shares > 1 ? 'shares' : 'share'} @ USD {currencyFormatter(price)} 
+              <br/>
+              <br/>
+              Purchase Amount: 
+              <br/>
+              USD <strong>{currencyFormatter(purchaseAmount)}</strong> 
+              <br/>
+              <br/>
+            </span>
+            <button id='confirm-btn' className='btn checkout' onClick={handleClick}>Confirm Purchase</button> 
+              <br/>
+              <br/>
+            <button id='cancel-btn' className='btn checkout' onClick={handleClick}>Cancel Purchase</button> 
+          </div>
       }
     </div>
   )

@@ -27,7 +27,7 @@ const TransactionList = () => {
               />
             )}
           </ul> :
-            <span id='no-record-alert'>
+            <span className='no-alert'>
               <h2>*No existing transaction records. Start your portfolio!</h2>
             </span>
         }
