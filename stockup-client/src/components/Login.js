@@ -37,39 +37,51 @@ const Login = ({history}) => {
   }
 
   return (
-    <div>
-      <ul>
+    <div id='login'>
+      <ul id='login-errors'>
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>
-      <form onSubmit={handleSubmit}>
+      <form id='login-form' onSubmit={handleSubmit}>
         {login ? null :
-          <input
+          <input 
+            className='login-input'
             type='text'
             value={username}
             placeholder='Username'
             onChange={event => setUsername(event.target.value)}
           />
         }
-        <input
+        <br/>
+        <input 
+          className='login-input'
           type='text'
           value={email}
           placeholder='Email'
           onChange={event => setEmail(event.target.value)}
         />
-        <input
+        <br/>
+        <input 
+          className='login-input'
           type='password'
           value={password}
           placeholder='Password'
           onChange={event => setPassword(event.target.value)}
         />
         <br/>
-        <input type='submit' value={login ? 'Log In' : 'Create Account'}/>
+        <input 
+          id='login-submit'
+          className='login-input btn' 
+          type='submit' 
+          value={login ? 'Log In' : 'Create Account'}
+        />
       </form>
       <br/>
       <br/>
-      <span>{login ? 'Need to create an account? ' : 'Already have an account? '}</span>
-      <br/>
-      <button onClick={handleClick}>{login ? 'Sign Up' : 'Log In'}</button>
+      <span id='login-toggle'>
+        <span>{login ? 'Need to create an account? ' : 'Already have an account? '}</span>
+        {/* <br/> */}
+        <button className='btn' onClick={handleClick}>{login ? 'Sign Up' : 'Log In'}</button>
+      </span>
     </div>
   )
 }
