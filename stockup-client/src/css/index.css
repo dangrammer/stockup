@@ -91,6 +91,7 @@ button:focus {
 }
 
 #login-form {
+  width: 300px;
   grid-row: 2/3;
   margin-top: 75px;
   font-size: 30px;
@@ -105,6 +106,7 @@ button:focus {
 .login-input {
   margin: 1px;
   font-size: 20px;
+  width: 98%;
 }
 
 #login-submit {
@@ -112,5 +114,49 @@ button:focus {
   width: 100%;
 }
 
+
+/* Header.js */
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 7px; 
+  height: 50px;
+  width: 99%;
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-between; 
+  align-items: center;
+  background-image: linear-gradient(to bottom, #5D705D, #84A882);
+  z-index: 1;
+}    
+
+#site-title {
+  padding-bottom: 5px;
+  font-size: 60px;
+  color: #84A882;
+  text-shadow: 1px 1px 3px #3E3E3C;
+}
+
+#home-dash {
+  font-size: 20px;
+  color: #84A882;
+  text-shadow: 1px 1px 3px #3E3E3C;
+}
+
+#log-out {
+  color: #3E3E3C;
+  background-color: #84A882;
+  border-color: #5D705D;
+}
+
+#log-out:hover {
+  border-color: #3E3E3C;
+}
+
+
+/* NavBar.js */
 
 

@@ -13,12 +13,11 @@ const Header = ({history}) => {
   }
  
   return (
-    <div>
-      <span><h1>$tock^</h1></span>
-      <span>
-        <span>⌂</span>
-        {` ${currentUser.attributes.username} `}
-        <button onClick={handleClick}>Log Out</button>
+    <div id='header'>
+      <span id='site-title'>$tock^</span>
+      <span id='home-dash'>
+        <span>{`${currentUser.attributes.username}   ⌂   `}</span>
+        <button id='log-out' className='btn' onClick={handleClick}>Log Out</button>
       </span>
     </div>
   )

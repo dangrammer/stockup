@@ -75,11 +75,9 @@ const Login = ({history}) => {
           value={login ? 'Log In' : 'Create Account'}
         />
       </form>
-      <br/>
-      <br/>
+      
       <span id='login-toggle'>
         <span>{login ? 'Need to create an account? ' : 'Already have an account? '}</span>
-        {/* <br/> */}
         <button className='btn' onClick={handleClick}>{login ? 'Sign Up' : 'Log In'}</button>
       </span>
     </div>
