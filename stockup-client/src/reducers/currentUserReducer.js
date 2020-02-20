@@ -10,7 +10,7 @@ const currentUserReducer = (state = initialState, action) => {
       return {...state, currentUser: action.user}
 
     case 'LOGOUT_USER':
-      return {...state, currentUser: {}, errors: []}
+      return initialState
 
     case 'UPDATE_USER':
       return {...state, currentUser: action.user}

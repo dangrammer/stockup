@@ -2,9 +2,35 @@ import React from 'react'
 import {currencyFormatter} from '../../actions/currencyFormatter'
 
 const Stock = ({symbol, shares, prices}) => {
+  let color
+
+  if (prices) {
+    if (prices.price > prices.open) color = '#3AD355'
+    if (prices.price < prices.open) color = '#FE4B4B'
+    if (prices.price === prices.open) color = 'grey'
+  }
+
+  const percentShift = (prices) => {
+    const p = prices.price
+    const o = prices.open
+    let shift
+
+    if (o < p) shift = `↑ (${(((p - o) / o) * 100).toFixed(2)})%`
+    if (o > p) shift = `↓ (${(((o - p) / o) * 100).toFixed(2)})%`
+    if (o === p) shift = '←'
+    
+    return shift
+  }
+
 
   return (
-    <li>{symbol} | {shares} {shares === 1 ? 'share' : 'shares'} | @ {prices ? currencyFormatter(prices.price) : 'Calculating...'} </li>
+    <li> 
+      <span>{symbol} | </span>
+      <span>{shares} {shares === 1 ? 'share' : 'shares'} | @ </span>
+      <span style={{color: color}}>
+        {prices ? `${currencyFormatter(prices.price)} ${percentShift(prices)}` : 'Calculating...'}
+      </span>
+    </li>
   )
 }
 

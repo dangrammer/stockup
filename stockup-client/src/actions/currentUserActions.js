@@ -94,9 +94,12 @@ export const createUser = (newUser, history) => {
   }
 }
 
-export const logoutUser = () => ({
-  type: 'LOGOUT_USER'
-})
+export const logoutUser = () => {
+  return (dispatch) => {
+    dispatch({type: 'RESET_STOCKS'})
+    dispatch({type: 'LOGOUT_USER'})
+  }
+} 
 
 export const adjustBalance = (userId, newBalance) => {
   const token = localStorage.token

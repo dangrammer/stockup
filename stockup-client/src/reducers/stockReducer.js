@@ -23,6 +23,9 @@ const stockReducer = (state = initialState, action) => {
       stocks.push(action.stock)
       return {...state, stocks: stocks}
 
+    case 'RESET_STOCKS':
+      return initialState  
+
     case 'STOCK_ERRORS':
       return {...state, errors: action.errors}  
 
