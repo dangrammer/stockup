@@ -1,6 +1,7 @@
 const initialState = {
   stocks: [],
   prices: [],
+  totalEarnings: null,
   errors: []
 }
 
@@ -22,6 +23,9 @@ const stockReducer = (state = initialState, action) => {
       let stocks = state.stocks.filter(stock => stock.id !== action.stock.id)
       stocks.push(action.stock)
       return {...state, stocks: stocks}
+
+    case 'SET_TOTAL_EARNINGS':
+      return {...state, totalEarnings: action.total}
 
     case 'RESET_STOCKS':
       return initialState  

@@ -9,10 +9,7 @@ const MainContainer = () => {
   const dispatch = useDispatch()
   const stocks = useSelector(state => state.stockReducer.stocks)
 
-  // should prices also be fetched here?
-  // should stocks and prices be fetched when App.js loads?
-  // const prices = useSelector(state => state.stockReducer.prices)
-
+// should  set interval and checkPrice be done in App.js???
   useEffect(() => {
     let priceCheck = setInterval(() => {
       stocks.forEach(stock => dispatch(checkPrice(stock.symbol)))

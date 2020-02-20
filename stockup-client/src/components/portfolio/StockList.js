@@ -1,31 +1,18 @@
-import React from 'react'
-import {useSelector} from 'react-redux'
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import Stock from './Stock'
+import {setTotalEarnings} from '../../actions/stockActions'
+import {currencyFormatter} from '../../actions/currencyFormatter'
 
 
 const StockList = () => {
+  const dispatch = useDispatch()
   const stocks = useSelector(state => state.stockReducer.stocks)
   const prices = useSelector(state => state.stockReducer.prices)
+  const totalEarnings = useSelector(state => state.stockReducer.totalEarnings)
   const errors = useSelector(state => state.stockReducer.errors)
 
-  // will work this out soon
-  // console.log(stocks)
-  // console.log(prices)
-
-  // async function earnings() {
-  //     let promise = new Promise((resolve) => {
-  //       stocks.map(stock => {
-  //         let priceObject = prices.find(p => p.symbol === stock.symbol)
-  //         if (priceObject) resolve(stock.shares * parseFloat(priceObject.price)) 
-  //       })
-  //     })
-  //     let earnings = await promise
-    
-  //     console.log(earnings)
-  //   }
-    
-  //   earnings()
-  
+  useEffect(() => dispatch(setTotalEarnings(stocks, prices)), [dispatch, stocks, prices])
 
   stocks.sort((a, b) => a.symbol.localeCompare(b.symbol))
 
@@ -34,7 +21,8 @@ const StockList = () => {
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>
-      Stocklist (TOTAL EARNING$)
+      {/* TOTAL EARNINGS: USD {totalEarnings !== null ? currencyFormatter(totalEarnings) : 'calculating...'} */}
+      TOTAL EARNINGS: USD {totalEarnings !== null || totalEarnings === 0 ? currencyFormatter(totalEarnings) : 'calculating...'}
       <br/>
       {stocks.length > 0 ?
           <ul>
