@@ -24,13 +24,13 @@ const MainContainer = () => {
   
 
   return (
-    <>
+    <div id='main'>
       <Switch>
         <Route path='/portfolio' component={PortfolioContainer}/>
         <Route path='/transactions' component={TransactionList}/>
         <Redirect to='/portfolio'/>
       </Switch>
-    </>
+    </div>
   )
 }
 

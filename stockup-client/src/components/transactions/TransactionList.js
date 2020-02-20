@@ -13,11 +13,10 @@ const TransactionList = () => {
   }
 
   return (
-    <>
-      <h1>Transaction Record</h1>
-      <div>
+    <div>
+      <h1 id='record-title'>Transaction Record</h1>
         {records.length > 0 ?
-          <>
+          <ul>
             {records.map(record => 
               <TransactionRecord 
                 key={record.id} 
@@ -27,11 +26,12 @@ const TransactionList = () => {
                 date={dateFormat(record.created_at)}
               />
             )}
-          </> :
-            <span>No Transaction Records</span>
+          </ul> :
+            <span id='no-record-alert'>
+              <h2>*No existing transaction records. Start your portfolio!</h2>
+            </span>
         }
-      </div>
-    </>
+    </div>
   )
 }
 
