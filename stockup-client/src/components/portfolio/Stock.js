@@ -5,7 +5,7 @@ const Stock = ({symbol, shares, prices}) => {
   let color
 
   if (prices) {
-    if (prices.price > prices.open) color = '#3AD355'
+    if (prices.price > prices.open) color = '#32C74C'
     if (prices.price < prices.open) color = '#FE4B4B'
     if (prices.price === prices.open) color = 'grey'
   }
@@ -15,8 +15,8 @@ const Stock = ({symbol, shares, prices}) => {
     const o = prices.open
     let shift
 
-    if (o < p) shift = `↑ (${(((p - o) / o) * 100).toFixed(2)})%`
-    if (o > p) shift = `↓ (${(((o - p) / o) * 100).toFixed(2)})%`
+    if (o < p) shift = `↑ (${(((p - o) / o) * 100).toFixed(2)}%)`
+    if (o > p) shift = `↓ (${(((o - p) / o) * 100).toFixed(2)}%)`
     if (o === p) shift = '←'
     
     return shift

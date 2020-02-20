@@ -6,6 +6,7 @@ import Stock from './Stock'
 const StockList = () => {
   const stocks = useSelector(state => state.stockReducer.stocks)
   const prices = useSelector(state => state.stockReducer.prices)
+  const errors = useSelector(state => state.stockReducer.errors)
 
   // will work this out soon
   // console.log(stocks)
@@ -30,6 +31,9 @@ const StockList = () => {
 
   return (
     <div>
+      <ul>
+        {errors.map(error => <li key={error}>{error}</li>)}
+      </ul>
       Stocklist (TOTAL EARNING$)
       <br/>
       {stocks.length > 0 ?
