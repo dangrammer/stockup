@@ -26,7 +26,7 @@ const PurchaseForm = () => {
   }
   
   const handleClick = (event) => {
-    if (event.target.id === 'confirm') {
+    if (event.target.id === 'confirm-btn') {
       const balance = parseFloat(user.attributes.balance)
       const record = {symbol, shares, price, userId: parseInt(user.id), balance}
       const stock = user.attributes.stockList.find(stock => stock.symbol === symbol)

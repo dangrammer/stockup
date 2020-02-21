@@ -15,7 +15,6 @@ const PortfolioContainer = () => {
   const errors = useSelector(state => state.stockReducer.errors)
 
   useEffect(() => dispatch(setTotalEarnings(stocks, prices)), [dispatch, stocks, prices])
-  console.log(totalEarnings, typeof totalEarnings, "from port container")
 
   return (
     <div id='portfolio'>
@@ -27,8 +26,9 @@ const PortfolioContainer = () => {
         <span>
           {'TOTAL EARNINGS: USD '} 
           <strong>
-            {totalEarnings === null ? 'calculating...' : currencyFormatter(totalEarnings)}
-            {/* {typeof totalEarnings !== 'number' || totalEarnings === NaN ? 'calculating...' : currencyFormatter(totalEarnings)} */}
+            {/* still working out this render */}
+            {/* {totalEarnings === null ? 'calculating...' : currencyFormatter(totalEarnings)} */}
+            {typeof totalEarnings !== 'number' || totalEarnings === NaN ? 'calculating...' : currencyFormatter(totalEarnings)}
           </strong>
         </span>
         <StockList/>

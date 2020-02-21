@@ -110,15 +110,15 @@ export const setTotalEarnings = (stocks, prices) => {
   return (dispatch) => {
     let valueHash = {}
     let values = []
-    // let total = [0]
+    let total = 0
 
     prices.forEach(price => valueHash[price.symbol] = parseFloat(price.price))
     stocks.forEach(stock => valueHash[stock.symbol] *= stock.shares)
     values = Object.values(valueHash)
    
-    // if (values.length > 1) total = values //.reduce((t, n) => t + n)
-    // if (values.length === 1) total = values[0]
-    console.log(values, 'from actions')
-    dispatch({type: 'SET_TOTAL_EARNINGS', total: values})
+    if (values.length > 1) total = values.reduce((t, n) => t + n)
+    if (values.length === 1) total = values[0]
+
+    dispatch({type: 'SET_TOTAL_EARNINGS', total})
   }
 }
