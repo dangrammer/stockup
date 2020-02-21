@@ -14,6 +14,8 @@ That issue and other needed refactors will be done at a future date.
 
   [$tock^ - The Premiere Stock Portfolio Simulator](https://stockup-client-deploy.herokuapp.com/) 
 
+## Screenshot  
+
 <img 
   src="stockup-client/public/stockupScreenshot.png" 
   alt="StockUp Screenshot" 
