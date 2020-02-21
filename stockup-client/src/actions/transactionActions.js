@@ -69,7 +69,8 @@ export const recordTransaction = (record, stockId) => {
 
   if (token) {
     return (dispatch) => {
-      fetch('http://localhost:3000/transactions', {
+      fetch('https://stockup-api.herokuapp.com/transactions', {
+        //  replace base URL to http://localhost:3000 if running devolopment
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
