@@ -10,6 +10,10 @@ uses authorization for a secure user experience. Due to frequency limitations fr
 the stocks API, there are some loading issues if user activity is frequent or volumous.
 That issue and other needed refactors will be done at a future date.
 
+## Deployed Site
+
+  [$tock^ - The Premiere Stock Portfolio Simulator](https://stockup-client-deploy.herokuapp.com/) 
+
 <img 
   src="stockup-client/public/stockupScreenshot.png" 
   alt="StockUp Screenshot" 
