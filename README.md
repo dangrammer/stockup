@@ -11,8 +11,8 @@ the stocks API, there are some loading issues if user activity is frequent or vo
 That issue and other needed refactors will be done at a future date.
 
 <img 
-  src="" 
-  alt="./stockup-client/public/stockpScreenshot" 
+  src="./stockup-client/public/stockupScreenshot" 
+  alt="StockUp Screenshot" 
   width="1350" 
 />
 
