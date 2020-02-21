@@ -17,7 +17,7 @@ export const validateTransaction = (symbol, shares, user) => {
       } else {
         dispatch({type: 'VALIDATING', switch: true})
 
-      fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${process.env.REACT_APP_AV_KEY}`, {
+      fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${process.env.REACT_APP_API_KEY}`, {
         method: 'get',
         headers: {
           'Content-Type': 'application/json',

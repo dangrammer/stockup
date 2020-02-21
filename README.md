@@ -73,12 +73,12 @@ Back End (API):
         ```
   7. run `rails s` in terminal to run server in browser at http://localhost:3000/
 
-  *_Note:_ `KEY_HERE` _should be characters of your choice **Always include**
+  *_Note:_ `KEY_HERE` _should be characters of your choice. **Always include**
   `.env` **file in** `.gitignore` **file**.
 
 ### Front End (Client)
 
-  8. use text editor and/or terminal to navigate into `giggy-frontend` directory
+  8. use text editor and/or terminal to navigate into `stockup-client` directory
   9. run `npm install` (or `npm i`) in terminal to install necessary dependencies
   10. create secret keys:
       - create a `.env` file in root directory
