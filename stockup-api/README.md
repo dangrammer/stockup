@@ -1,3 +1,1 @@
-# README
-
-Details forthcoming...
+Refer to the [README.md](https://github.com/dangrammer/stockup) file in the parent directory.

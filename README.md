@@ -70,7 +70,7 @@ Back End (API):
   3. run `bundle install` (or `bundle i`) in terminal to install necessary dependencies
   4. run `rails db:create` in terminal to create database
   5. run `rails db:migrate` in terminal to initialize database
-  6. create secret keys:
+  6. create secret key:
       - create a `.env` file in root directory
       - write secret key for JWT in `.env` file:
         ```
@@ -86,7 +86,7 @@ Back End (API):
 
   8. use text editor and/or terminal to navigate into `stockup-client` directory
   9. run `npm install` (or `npm i`) in terminal to install necessary dependencies
-  10. create secret keys:
+  10. create secret key:
       - create a `.env` file in root directory
       - write secret key for Alpha Vantage Stocks API in `.env` file:
         ```
