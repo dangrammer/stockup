@@ -26,9 +26,10 @@ const PortfolioContainer = () => {
         <span>
           {'TOTAL EARNINGS: USD '} 
           <strong>
-            {/* still working out this render */}
-            {/* {totalEarnings === null ? 'calculating...' : currencyFormatter(totalEarnings)} */}
-            {typeof totalEarnings !== 'number' || totalEarnings === NaN ? 'calculating...' : currencyFormatter(totalEarnings)}
+            {totalEarnings === null || isNaN(totalEarnings) ? 
+              'Calculating...' : 
+                currencyFormatter(totalEarnings)
+            }
           </strong>
         </span>
         <StockList/>
