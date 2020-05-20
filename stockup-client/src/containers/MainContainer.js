@@ -10,15 +10,15 @@ const MainContainer = () => {
   const stocks = useSelector(state => state.stockReducer.stocks)
 
 // should set interval and checkPrice be done in App.js???
-  useEffect(() => {
-    let priceCheck = setInterval(() => {
-      stocks.forEach(stock => dispatch(checkPrice(stock.symbol)))
-      console.log('price check')
-    }, 60000)
-    return () => {
-      clearInterval(priceCheck)
-    }
-  }, [dispatch, stocks])
+  // useEffect(() => {
+  //   let priceCheck = setInterval(() => {
+  //     stocks.forEach(stock => dispatch(checkPrice(stock.symbol)))
+  //     console.log('price check')
+  //   }, 60000)
+  //   return () => {
+  //     clearInterval(priceCheck)
+  //   }
+  // }, [dispatch, stocks])
  
   stocks.forEach(stock => dispatch(checkPrice(stock.symbol)))
   

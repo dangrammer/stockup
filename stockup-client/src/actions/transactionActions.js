@@ -9,7 +9,6 @@ export const validateTransaction = (symbol, shares, user) => {
   
   return (dispatch) => {
     if (token) {
-      
       if (shareQty < 1 || !Number.isInteger(shareQty)) {
         dispatch({type: 'TRANSACTION_ERRORS', errors: ['Share quantity must be whole integer']})
         setTimeout(() => dispatch({type: 'CLEAR_TRANSACTION_ERRORS'}), 2500)
@@ -69,8 +68,8 @@ export const recordTransaction = (record, stockId) => {
 
   if (token) {
     return (dispatch) => {
-      fetch('https://stockup-api.herokuapp.com/transactions', {
-        //  replace base URL to http://localhost:3000 if running devolopment
+      fetch('http://localhost:3000/transactions', {
+        //  replace base URL to https://stockup-api.herokuapp.com if running production
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

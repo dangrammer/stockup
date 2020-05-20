@@ -8,8 +8,8 @@ export const addStockToPortfolio = (symbol, shares, userId) => {
 
   if (token) {
     return (dispatch) => {
-      fetch('https://stockup-api.herokuapp.com/stocks', {
-        //  replace base URL to http://localhost:3000 if running devolopment
+      fetch('http://localhost:3000/stocks', {
+        //  replace base URL to https://stockup-api.herokuapp.com if running production
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,8 +48,8 @@ export const increaseShares = (stockId, shares) => {
 
   if (token) {
     return (dispatch) => {
-      fetch(`https://stockup-api.herokuapp.com/stocks/${stockId}`, {
-        //  replace base URL to http://localhost:3000 if running devolopment
+      fetch(`http://localhost:3000/stocks/${stockId}`, {
+        //  replace base URL to https://stockup-api.herokuapp.com if running production
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

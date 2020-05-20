@@ -10,8 +10,8 @@ export const loadProfile = () => {
   
   return (dispatch) => {
     if (token) {
-      fetch('https://stockup-api.herokuapp.com/profile', {
-        //  replace base URL to http://localhost:3000 if running devolopment
+      fetch('http://localhost:3000/profile', {
+        //  replace base URL to https://stockup-api.herokuapp.com if running production
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -39,8 +39,8 @@ export const validateUser = (returningUser, history) => {
   const {email, password} = returningUser
 
   return (dispatch) => {
-    fetch('https://stockup-api.herokuapp.com/login', {
-       //  replace base URL to http://localhost:3000 if running devolopment
+    fetch('http://localhost:3000/login', {
+       //  replace base URL to https://stockup-api.herokuapp.com if running production
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -69,8 +69,8 @@ export const createUser = (newUser, history) => {
   const {username, email, password} = newUser
 
   return (dispatch) => {
-    fetch('https://stockup-api.herokuapp.com/users', {
-       //  replace base URL to http://localhost:3000 if running devolopment
+    fetch('http://localhost:3000/users', {
+       //  replace base URL to https://stockup-api.herokuapp.com if running production
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -109,8 +109,8 @@ export const adjustBalance = (userId, newBalance) => {
 
   if (token) {
     return (dispatch) => {
-      fetch(`https://stockup-api.herokuapp.com/users/${userId}`, {
-        //  replace base URL to http://localhost:3000 if running devolopment
+      fetch(`http://localhost:3000/users/${userId}`, {
+        //  replace base URL to https://stockup-api.herokuapp.com if running production
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
