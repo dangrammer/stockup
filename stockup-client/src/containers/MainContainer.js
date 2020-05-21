@@ -5,9 +5,15 @@ import PortfolioContainer from './PortfolioContainer'
 import TransactionList from '../components/transactions/TransactionList'
 import {checkPrice} from '../actions/stockActions'
 
+import {loadProfile} from '../actions/currentUserActions' ///////////////////////////////////
+
 const MainContainer = () => {
   const dispatch = useDispatch()
   const stocks = useSelector(state => state.stockReducer.stocks)
+
+  useEffect(() => dispatch(loadProfile()), [dispatch]) /////////////////////////////////////
+
+  stocks.forEach(stock => dispatch(checkPrice(stock.symbol)))
 
 // should set interval and checkPrice be done in App.js???
   useEffect(() => {
@@ -19,9 +25,9 @@ const MainContainer = () => {
       clearInterval(priceCheck)
     }
   }, [dispatch, stocks])
- 
-  stocks.forEach(stock => dispatch(checkPrice(stock.symbol)))
+
   
+
 
   return (
     <div id='main'>

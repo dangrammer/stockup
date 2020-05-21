@@ -21,7 +21,6 @@ export const loadProfile = () => {
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         const userObject = data.user.data
         const stockList = userObject.attributes.stockList
 

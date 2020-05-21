@@ -13,7 +13,7 @@ const PortfolioContainer = () => {
   const prices = useSelector(state => state.stockReducer.prices)
   const totalEarnings = useSelector(state => state.stockReducer.totalEarnings)
   const errors = useSelector(state => state.stockReducer.errors)
-
+ 
   useEffect(() => dispatch(setTotalEarnings(stocks, prices)), [dispatch, stocks, prices])
 
   return (
@@ -26,10 +26,7 @@ const PortfolioContainer = () => {
         <span>
           {'TOTAL EARNINGS: USD '} 
           <strong>
-            {totalEarnings === null || isNaN(totalEarnings) ? 
-              'Calculating...' : 
-                currencyFormatter(totalEarnings)
-            }
+            {!totalEarnings ? 'Calculating...' : currencyFormatter(totalEarnings)}
           </strong>
         </span>
         <StockList/>
