@@ -8,10 +8,9 @@ import {checkPrice} from '../actions/stockActions'
 const MainContainer = () => {
   const dispatch = useDispatch()
   const stocks = useSelector(state => state.stockReducer.stocks)
-
-  stocks.forEach(stock => dispatch(checkPrice(stock.symbol)))
-
+  
   useEffect(() => {
+    stocks.forEach(stock => dispatch(checkPrice(stock.symbol)))
     let priceCheck = setInterval(() => {
       stocks.forEach(stock => dispatch(checkPrice(stock.symbol)))
       console.log('price check')
