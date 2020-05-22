@@ -23,7 +23,6 @@ export const loadProfile = () => {
       .then(data => {
         const userObject = data.user.data
         const stockList = userObject.attributes.stockList
-
         if (data.user) {
             dispatch(loginUser(userObject))
             dispatch(loadPortfolio(stockList))
@@ -53,12 +52,15 @@ export const validateUser = (returningUser, history) => {
     })
     .then(response => response.json())
     .then(data => {
+      const userObject = data.user.data
+      const stockList = userObject.attributes.stockList
       if (data.errors) {
         dispatch({type: 'USER_ERRORS', errors: data.errors})
         setTimeout(() => dispatch({type: 'CLEAR_USER_ERRORS'}), 5000)
       } else {
         localStorage.setItem('token', data.token)
-        dispatch(loginUser(data.user.data))
+        dispatch(loginUser(userObject))
+        dispatch(loadPortfolio(stockList))
         history.push('/portfolio')
       }
     }) 

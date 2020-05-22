@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import CashBalance from '../components/portfolio/CashBalance'
 import PurchaseForm from '../components/portfolio/PurchaseForm'
 import StockList from '../components/portfolio/StockList'
-
 import {useDispatch, useSelector} from 'react-redux'
 import {setTotalEarnings} from '../actions/stockActions'
 import {currencyFormatter} from '../actions/currencyFormatter'
