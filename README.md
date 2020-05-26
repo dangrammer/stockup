@@ -32,14 +32,14 @@ Front End (Client):
   - HTML5 (JSX)
   - CSS3 (customized - no templates)
   - ES6 JavaScript
-  - React ^16.12.0 
-  - React-Dom ^16.12.0 
-  - React-Redux ^7.1.3 
-  - React-Router ^5.1.2 
-  - React-Router-Dom ^5.1.2 
-  - React-Scripts ^3.2.0 
-  - Redux ^4.0.4 
-  - Redux-thunk ^2.3.0 
+  - React ^16.13.1 
+  - React-Dom ^16.13.1 
+  - React-Redux ^7.2.0 
+  - React-Router ^5.2.0 
+  - React-Router-Dom ^5.2.0 
+  - React-Scripts ^3.4.0 
+  - Redux ^4.0.5 
+  - Redux-thunk ^4.0.5 
   - Redux-Devtools-Extension ^2.13.8
 
 Back End (API):
